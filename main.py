@@ -9,6 +9,9 @@ number_image = len(list)
 for i in range(number_image):
   i = i+1
 
+  dirname = "C:/Users/xrace/Documents/Pixel/image%d"%i
+  os.mkdir(dirname)
+
   image_name = "C:/Users/xrace/Documents/Pixel/image%d.png"%i
   
   input = cv2.imread(image_name)
@@ -20,14 +23,18 @@ for i in range(number_image):
   while g < 5:
     if g == 1:
       x = 20
+      size = "20px_image%d.png"%i
     elif g ==2:
       x = 10
+      size = "10px_image%d.png"%i
     elif g == 3:
       x = 5
+      size = "5px_image%d.png"%i
     elif g == 4 :
       x = 2 
+      size = "2px_image%d.png"%i
 
-    z = round(x/width, 2)
+    z = round(x/width, 3)
     
     y = int(height * z)
     print(y)
@@ -40,9 +47,8 @@ for i in range(number_image):
     # Initialize output image
     output = cv2.resize(temp, (width, height), interpolation=cv2.INTER_NEAREST)
 
-    cv2.imshow('Input', input)
     cv2.imshow('Output', output)
-
-    k = cv2.waitKey(5000) & 0xff
-    cv2.destroyAllWindows()
+    cv2.imwrite(os.path.join(dirname, size), output)
     g += 1
+  cv2.imwrite(os.path.join(dirname, "image%d.png"%i), input)
+  os.remove(image_name)
