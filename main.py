@@ -38,14 +38,18 @@ for i in range(number_image):
     
     y = int(height * z)
     print(y)
-
+    
+    a = round(400/width, 3)
+    
+    newh = int(width * a)
+    neww = 400
    
 
     # Resize input to "pixelated" size
     temp = cv2.resize(input, (x, y), interpolation=cv2.INTER_LINEAR)
 
     # Initialize output image
-    output = cv2.resize(temp, (width, height), interpolation=cv2.INTER_NEAREST)
+    output = cv2.resize(temp, (neww, newh), interpolation=cv2.INTER_NEAREST)
 
     cv2.imshow('Output', output)
     cv2.imwrite(os.path.join(dirname, size), output)
