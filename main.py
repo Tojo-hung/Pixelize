@@ -19,6 +19,11 @@ for i in range(number_image):
   # Get input size
   height, width = input.shape[:2]
 
+  a = round(400/width, 3)
+    
+  newh = int(height * a)
+  neww = 400
+
   g = 1
   while g < 5:
     if g == 1:
@@ -38,11 +43,6 @@ for i in range(number_image):
     
     y = int(height * z)
     print(y)
-    
-    a = round(400/width, 3)
-    
-    newh = int(width * a)
-    neww = 400
    
 
     # Resize input to "pixelated" size
